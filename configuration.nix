@@ -2,15 +2,37 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let 
+  home-manager = builtins.fetchTarball {
+    url = https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
+    sha256 = "07pk5m6mxi666dclaxdwf7xrinifv01vvgxn49bjr8rsbh31syaq";
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      (import "${home-manager}/nixos")
+      #inputs.noctalia.homeModules.default
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    backupFileExtension = "backup";
+    extraSpecialArgs = { inherit inputs; };
+    users.alex =
+      { ... }:
+      {
+        imports = [
+          ./home.nix
+        ];
+      };
+    
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -90,7 +112,7 @@
     #  thunderbird
     ];
   };
-
+  
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -111,6 +133,9 @@
   kitty
   ghostty
   stow
+  btop
+  alacritty
+  foot
   ];
   fonts.packages = with pkgs; [
   maple-mono.NF-unhinted

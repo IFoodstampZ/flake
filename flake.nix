@@ -9,10 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #nixcats = {
-      #url = "github:BirdeeHub/nixCats-nvim";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    nixcats = {
+      url = "github:BirdeeHub/nixCats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -20,7 +20,7 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-	./noctalia.nix
+        #./noctalia.nix
 	];
     };
   };
