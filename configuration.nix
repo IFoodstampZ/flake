@@ -13,20 +13,6 @@ in
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    backupFileExtension = "backup";
-    extraSpecialArgs = { inherit inputs; };
-    users.alex =
-      { ... }:
-      {
-        imports = [
-          ./home.nix
-        ];
-      };
-    
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
