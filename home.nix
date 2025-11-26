@@ -13,6 +13,7 @@
   programs.noctalia-shell = {
     enable = true;
   };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -44,6 +45,13 @@
     '';
     */
   
+  };
+  
+  programs.foot = {
+    enable = true;
+    #enableZshIntegration = true;
+    #theme = "gruvbox";
+
   };
 
 }

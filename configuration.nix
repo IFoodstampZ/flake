@@ -2,20 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, wrappers, ... }:
 
 let 
-  home-manager = builtins.fetchTarball {
-    url = https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
-    sha256 = "07pk5m6mxi666dclaxdwf7xrinifv01vvgxn49bjr8rsbh31syaq";
-  };
 in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
-      #inputs.noctalia.homeModules.default
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -104,6 +98,8 @@ in
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   users.users.alex = {
     isNormalUser = true;
     description = "alex";
@@ -123,20 +119,21 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   vim
-  neovim
   git
   wget
   yazi
   gh
   tmux
   wofi
-  kitty
   ghostty
   stow
   btop
   alacritty
   foot
+  inputs.nixcats.packages.x86_64-linux.nvim
+  #(./wrapper)
   ];
+
   fonts.packages = with pkgs; [
   maple-mono.NF-unhinted
   ];
