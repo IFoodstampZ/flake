@@ -18,16 +18,18 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    /*
+
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
       plugins = [ "git" "npm" ];
-    };*/
+    };
+
     shellAliases = {
       btw = "echo i use nixos btw";
       fuck = "sudo nixos-rebuild switch --flake";
-      you = ".";
+      nrs = "sudo nixos-rebuild switch";
+      hm = "home-manager";
     };
     /*
     enableGloba
@@ -54,5 +56,7 @@
     #theme = "gruvbox";
 
   };
+  programs.home-manager.enable = true;
+
 
 }
