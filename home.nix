@@ -9,10 +9,32 @@
   home.username = "alex";
   home.homeDirectory = "/home/alex";
   home.stateVersion = "25.05";
+
+  home.packages = [
+    pkgs.niri
+    pkgs.steam
+    inputs.nixcats.packages.x86_64-linux.nvim
+  ];
+
+  home.file."${config.xdg.configHome}" = {
+    source = ./dotfiles;
+    recursive = true;
+  };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
   
   programs.noctalia-shell = {
     enable = true;
   };
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.neovide.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -21,7 +43,7 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "half-life";
       plugins = [ "git" "npm" ];
     };
 
@@ -31,29 +53,17 @@
       nrs = "sudo nixos-rebuild switch";
       hm = "home-manager";
     };
-    /*
-    enableGloba
-    #dotDir = ".config/zsh";
-    
-    shellAliases = {
-      btw = "echo i use nixos btw";
-      fuck = "sudo nixos-rebuild switch --flake";
-      you = ".";
-    };
-    
-    initContent = ''
-      PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
- 
-
-    '';
-    */
   
   };
   
   programs.foot = {
     enable = true;
-    #enableZshIntegration = true;
     #theme = "gruvbox";
+    settings = {
+      main = {
+        font="MapleMonoNF:size=12";
+      };
+    };
 
   };
   programs.home-manager.enable = true;

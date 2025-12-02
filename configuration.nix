@@ -107,16 +107,13 @@ in
   vim
   git
   wget
-  yazi
+  #yazi
   gh
   tmux
-  wofi
-  ghostty
   stow
   btop
-  alacritty
-  foot
-  inputs.nixcats.packages.x86_64-linux.nvim
+  #foot
+  #inputs.nixcats.packages.x86_64-linux.nvim
   #(./wrapper)
   ];
 
