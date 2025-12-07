@@ -10,9 +10,11 @@
   home.homeDirectory = "/home/alex";
   home.stateVersion = "25.05";
 
+  
+
   home.packages = [
     pkgs.niri
-    pkgs.steam
+    pkgs.xwayland-satellite
     inputs.nixcats.packages.x86_64-linux.nvim
   ];
 
@@ -20,6 +22,8 @@
     source = ./dotfiles;
     recursive = true;
   };
+  
+
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -52,6 +56,7 @@
       fuck = "sudo nixos-rebuild switch --flake";
       nrs = "sudo nixos-rebuild switch";
       hm = "home-manager";
+      hms = "home-manager switch";
     };
   
   };

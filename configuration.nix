@@ -15,8 +15,15 @@ in
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
+  # Enable virualization
+  virtualisation.libvirtd.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,6 +62,7 @@ in
 
   programs.niri.enable = true;
 
+  programs.steam.enable = true;
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -89,7 +97,7 @@ in
   users.users.alex = {
     isNormalUser = true;
     description = "alex";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -112,6 +120,7 @@ in
   tmux
   stow
   btop
+  fastfetch
   #foot
   #inputs.nixcats.packages.x86_64-linux.nvim
   #(./wrapper)
