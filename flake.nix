@@ -15,8 +15,8 @@
     inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #nixcats.url = "github:BirdeeHub/nixCats-nvim";
-    nixcats.url = "./nixcats";
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    #nixcats.url = "./nixcats";
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: 

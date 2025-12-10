@@ -15,7 +15,6 @@
   home.packages = [
     pkgs.niri
     pkgs.xwayland-satellite
-    inputs.nixcats.packages.x86_64-linux.nvim
   ];
 
   home.file."${config.xdg.configHome}" = {
