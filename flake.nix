@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
@@ -11,7 +11,7 @@
     wrappers.url = "github:lassulus/wrappers";
     
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
