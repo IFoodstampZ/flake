@@ -7,11 +7,10 @@ in
     [
     ];
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
+  nix.settings.experimental-features = "nix-command flakes";
+  #system.configurationRevision = self.rev or self.dirtyRev or null;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   environment.systemPackages = with pkgs; [
   vim
@@ -19,19 +18,18 @@ in
   wget
   yazi
   gh
+  neofetch
   tmux
-  wofi
-  ghostty
   stow
   btop
   alacritty
-  foot
-  inputs.nixcats.packages.x86_64-linux.nvim
+  ghostty
+  #inputs.nixcats.packages.x86_64-linux.nvim
   #(./wrapper)
   ];
 
   fonts.packages = with pkgs; [
-  maple-mono.NF-unhinted
+    maple-mono.NF-unhinted
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -59,7 +57,7 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = 6; # Did you read the comment?
 
 }
 
