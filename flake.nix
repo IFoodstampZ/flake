@@ -10,16 +10,22 @@
     };
     wrappers.url = "github:lassulus/wrappers";
     
-    home-manager = {
-    url = "github:nix-community/home-manager";
-    inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
 
     #nixcats.url = "github:BirdeeHub/nixCats-nvim";
     nixcats.url = "./nixcats";
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs: 
+  outputs = { nixpkgs, home-manager, nix-darwin, ... } @ inputs: 
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -31,6 +37,11 @@
         ./configuration.nix
 	];
     };
+    
+    darwinConfigurations.Alexs-MacBook-Air = nix-darwin.lib.darwinSystem {
+      modules = [ ./darconf.nix ];
+      specialArgs = { inherit inputs; };
+    };
 
     homeConfigurations.alex = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
@@ -41,6 +52,7 @@
     };
 
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+
     
   };
 }
