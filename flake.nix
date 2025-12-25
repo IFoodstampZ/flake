@@ -21,7 +21,6 @@
     };
     
 
-    nixcats.url = "github:BirdeeHub/nixCats-nvim";
   };
 
   outputs = { nixpkgs, home-manager, nix-darwin, ... } @ inputs: 
