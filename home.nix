@@ -2,17 +2,22 @@
 
 {
   imports = [
-    inputs.noctalia.homeModules.default
+    #inputs.noctalia.homeModules.default
   ];
+
+  ### NOTES ###
+  # dont forget to move nixos specific shit to nixos its commented
 
 
   home.username = "alex";
-  home.homeDirectory = "/home/alex";
+  #home.homeDirectory = "/home/alex";
+  # ghetto compatibility
+  home.homeDirectory = "/Users/alex/";
   home.stateVersion = "25.05";
   
-  programs.noctalia-shell = {
-    enable = true;
-  };
+  #programs.noctalia-shell = {
+  #  enable = true;
+  #};
 
   programs.zsh = {
     enable = true;
@@ -25,7 +30,8 @@
     };
     shellAliases = {
       btw = "echo i use nixos btw";
-      fuck = "sudo nixos-rebuild switch --flake";
+      #fuck = "sudo nixos-rebuild switch --flake";
+      #move to respective conf
       you = ".";
     };
     /*
