@@ -2,9 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
@@ -12,14 +10,9 @@
     };
     wrappers.url = "github:lassulus/wrappers";
     
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
     };
 
     mnw.url = "github:Gerg-L/mnw";
@@ -28,10 +21,10 @@
     nixcats.url = "github:BirdeeHub/nixCats-nvim";
   };
 
-  outputs = { nixpkgs, mnw, self, home-manager, nix-darwin, ... } @ inputs: 
+  outputs = { nixpkgs, home-manager, ... } @ inputs: 
   let
-    system = "aarch64-darwin";
-    pkgs = inputs.nixpkgs.legacyPackages.${system};
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -40,71 +33,16 @@
         ./configuration.nix
 	];
     };
-    
-    darwinConfigurations.macbook = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./hosts/darwin/configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            #users.alex = ./darwinhome.nix;
-            users.alex = ./hosts/darwin/home.nix;
-          };
-        }
-      ];
 
-      specialArgs = { inherit inputs; };
+    homeConfigurations.alex = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs { inherit system; config.allowUnfree = true;};
+
+      modules = [ ./home.nix ];
+
+      extraSpecialArgs = { inherit inputs; };
     };
-
-    #homeConfigurations.alex = home-manager.lib.homeManagerConfiguration {
-    #  inherit pkgs;
-
-    #  modules = [ ./home.nix ];
-
-    #  extraSpecialArgs = { inherit inputs; };
-    #};
 
     packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.aarch64-darwin.default = self.packages.aarch64-darwin.neovim;
-    packages.aarch64-darwin.neovim = mnw.lib.wrap pkgs {
-      neovim = pkgs.neovim-unwrapped;
-      initLua = ''
-        require("myconfig")
-      '';
-      plugins = {
-        start = [
-          pkgs.vimPlugins.oil-nvim
-	  pkgs.vimPlugins.which-key-nvim
-        ];
-        dev.myconfig = {
-          pure = ./nvim;
-          impure =
-            # This is a hack it should be a absolute path
-            # here it'll only work from this directory
-            "/' .. vim.uv.cwd()  .. '/nvim";
-        };
-      };
-
-    };
-    dev = self.packages.aarch64-darwin.default.devMode;
-    packages.aarch64-darwin.less = pkgs.symlinkJoin {
-      name = "lesswrap";
-      paths = [ pkgs.less ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/less \
-          --set LESS '--RAW-CONTROL-CHARS --clear-screen' \
-          --set LESSKEY_CONTENT 'h left-scroll'
-      '';
-      meta.mainProgram = "less";
-    };
-    # nixos.org/manual/nixpkgs/stable/
-    #callpackage
-    #symlinkjoin
-
+    
   };
 }

@@ -1,23 +1,5 @@
 {
   "nodes": {
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib"
-      },
-      "locked": {
-        "lastModified": 1765835352,
-        "narHash": "sha256-XswHlK/Qtjasvhd1nOa1e8MgZ8GS//jBoTqWtrS1Giw=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "a34fae9c08a15ad73f295041fec82323541400a9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -25,6 +7,7 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
 <<<<<<< HEAD
         "lastModified": 1766171975,
         "narHash": "sha256-47Ee0bTidhF/3/sHuYnWRuxcCrrm0mBNDxBkOTd3wWQ=",
@@ -38,6 +21,13 @@
         "repo": "home-manager",
         "rev": "91cdb0e2d574c64fae80d221f4bf09d5592e9ec2",
 >>>>>>> 8384674 (hi)
+=======
+        "lastModified": 1766171975,
+        "narHash": "sha256-47Ee0bTidhF/3/sHuYnWRuxcCrrm0mBNDxBkOTd3wWQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "bb35f07cc95a73aacbaf1f7f46bb8a3f40f265b5",
+>>>>>>> 0fbbe53 (mnw and darwin configs)
         "type": "github"
       },
       "original": {
@@ -46,6 +36,7 @@
         "type": "github"
       }
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     "nixCats": {
@@ -101,6 +92,9 @@
       }
     },
     "nixcats": {
+=======
+    "nixCats": {
+>>>>>>> 0fbbe53 (mnw and darwin configs)
       "locked": {
         "lastModified": 1765766809,
         "narHash": "sha256-3Xp41+Sb1zIzASa1Uu1k1RMUoJ9CGyYb0GtvvpRPBqg=",
@@ -117,6 +111,7 @@
     },
     "nixpkgs": {
       "locked": {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         "lastModified": 1766070988,
@@ -138,31 +133,27 @@
         "repo": "nixpkgs",
         "rev": "3c1016e6acd16ad96053116d0d3043029c9e2649",
 >>>>>>> c2fb853 (mnw and darwin configs)
+=======
+        "lastModified": 1766070988,
+        "narHash": "sha256-G/WVghka6c4bAzMhTwT2vjLccg/awmHkdKSd2JrycLc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c6245e83d836d0433170a16eb185cefe0572f8b8",
+>>>>>>> 0fbbe53 (mnw and darwin configs)
         "type": "github"
       },
       "original": {
         "owner": "nixos",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "ref": "nixos-unstable",
 =======
         "ref": "nixpkgs-unstable",
 >>>>>>> 8384674 (hi)
+=======
+        "ref": "nixos-unstable",
+>>>>>>> 0fbbe53 (mnw and darwin configs)
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-lib": {
-      "locked": {
-        "lastModified": 1765674936,
-        "narHash": "sha256-k00uTP4JNfmejrCLJOwdObYC9jHRrr/5M/a/8L2EIdo=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "2075416fcb47225d9b68ac469a5c4801a9c4dd85",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
         "type": "github"
       }
     },
@@ -191,6 +182,7 @@
       "locked": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "lastModified": 1766202991,
         "narHash": "sha256-i0bSny2EeEdWjErFUXbFfoJOZMJLMsxEYMyw/f5oZu0=",
         "owner": "noctalia-dev",
@@ -210,6 +202,13 @@
         "repo": "noctalia-shell",
         "rev": "ce2166a8477918c80358b703edda6450476400f2",
 >>>>>>> c2fb853 (mnw and darwin configs)
+=======
+        "lastModified": 1766202991,
+        "narHash": "sha256-i0bSny2EeEdWjErFUXbFfoJOZMJLMsxEYMyw/f5oZu0=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "c8b76c7b90c1a9efa8c8c5a5c3229ca86b855830",
+>>>>>>> 0fbbe53 (mnw and darwin configs)
         "type": "github"
       },
       "original": {
@@ -220,8 +219,8 @@
     },
     "root": {
       "inputs": {
-        "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         "nixCats": "nixCats",
@@ -233,6 +232,9 @@
         "nix-darwin": "nix-darwin",
         "nixcats": "nixcats",
 >>>>>>> c2fb853 (mnw and darwin configs)
+=======
+        "nixCats": "nixCats",
+>>>>>>> 0fbbe53 (mnw and darwin configs)
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "wrappers": "wrappers"
@@ -243,6 +245,7 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
+<<<<<<< HEAD
 <<<<<<< HEAD
         "lastModified": 1764326721,
         "narHash": "sha256-JT6Nz/I4IpJNIbY5Oy+NpHTe4fqEsIuxIpIZAfEZWEc=",
@@ -256,6 +259,13 @@
         "repo": "wrappers",
         "rev": "7ea9ba94ed2bd1fa4ae37b2665498e1950180f8a",
 >>>>>>> 8384674 (hi)
+=======
+        "lastModified": 1764326721,
+        "narHash": "sha256-JT6Nz/I4IpJNIbY5Oy+NpHTe4fqEsIuxIpIZAfEZWEc=",
+        "owner": "lassulus",
+        "repo": "wrappers",
+        "rev": "94d1131dd8c8a310f3e23c82ee75919cb401e716",
+>>>>>>> 0fbbe53 (mnw and darwin configs)
         "type": "github"
       },
       "original": {
