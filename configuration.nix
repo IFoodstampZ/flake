@@ -63,7 +63,10 @@ in
 
   programs.niri.enable = true;
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -124,6 +127,7 @@ in
   virt-manager
   qemu
   gnumake
+  qbittorrent
   #foot
   #inputs.nixcats.packages.x86_64-linux.nvim
   #(./wrapper)
