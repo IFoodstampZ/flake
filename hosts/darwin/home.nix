@@ -57,7 +57,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
+/*
   programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -74,6 +74,7 @@
         you = ".";
       };
   };
+  */
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
