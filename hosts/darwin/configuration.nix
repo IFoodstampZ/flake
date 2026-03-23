@@ -83,8 +83,8 @@ in
     wget
     yazi
     gh
-    neofetch
     tmux
+    tldr
     stow
     btop
     alacritty
@@ -93,6 +93,8 @@ in
     emacs
     nushell
     yt-dlp
+    pipx
+    python3
     yazi
     unrar
     cmake
