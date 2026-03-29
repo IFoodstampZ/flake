@@ -13,7 +13,7 @@ in
     lua-language-server
     tinymist
     stylua
-    nixfmt-rfc-style
+    nixfmt
     clang-tools
   ];
   plugins = {

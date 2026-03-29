@@ -128,12 +128,18 @@ in
     enableFastSyntaxHighlighting = true;
     enableFzfCompletion = true;
     enableFzfHistory = true;
-    promptInit = ''PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "'';
+    promptInit = ''
+      PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+      fastfetch
+    '';
     interactiveShellInit = ''
       autoload -U colors && colors
       eval "$(zoxide init zsh)"
       eval "$(direnv hook zsh)"
     '';
+    variables = {
+      PATH = "$PATH:/Users/alex/.local/bin";
+    };
   };
 
   environment.shellAliases = {
