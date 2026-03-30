@@ -49,11 +49,15 @@
         systems = [
           # systems for which you want to build the `perSystem` attributes
           "x86_64-linux"
-          "aarch-64-darwin"
+          "aarch64-darwin"
           # ...
         ];
         perSystem =
-          { config, pkgs, ... }:
+          {
+            config,
+            pkgs,
+            ...
+          }:
           {
             # Recommended: move all package definitions here.
             # e.g. (assuming you have a nixpkgs input)
@@ -61,9 +65,6 @@
             # packages.bar = pkgs.callPackage ./bar/package.nix {
             #   foo = config.packages.foo;
             # };
-            packages.neovim = pkgs.callPackage inputs.mnw.lib.wrap {
-              inherit inputs pkgs;
-            } ./nvim.nix;
           };
       }
     );

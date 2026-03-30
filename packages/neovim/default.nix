@@ -1,7 +1,4 @@
 { inputs, pkgs, ... }:
-let
-  #pkgs = inputs.nixpkgs.legacyPackages.${system};
-in
 {
   neovim = pkgs.neovim-unwrapped;
   luaFiles = [
