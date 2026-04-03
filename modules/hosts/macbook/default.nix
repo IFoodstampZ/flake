@@ -1,8 +1,9 @@
 { self, inputs, ... }:
 {
   flake.darwinConfigurations.macbook = inputs.nix-darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
     modules = [
-      self.nixosModules.macbookConfiguration
+      self.darwinModules.macbookConfiguration
     ];
   };
 }

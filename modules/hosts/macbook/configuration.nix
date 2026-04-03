@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosModules.macbookConfiguration =
+  flake.darwinModules.macbookConfiguration =
     {
       inputs,
       pkgs,
@@ -9,12 +9,11 @@
 
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-
     in
     {
 
       imports = [
-        inputs.spicetify-nix.darwinModules.spicetify
+        #inputs.spicetify-nix.darwinModules.spicetify
       ];
 
       nix.settings.experimental-features = "nix-command flakes";
@@ -64,16 +63,17 @@
         };
       */
 
-      programs.spicetify = {
-        enable = true;
-        enabledExtensions = with spicePkgs.extensions; [
-          adblockify
-          shuffle
-        ];
-        theme = spicePkgs.themes.catppuccin;
-        colorScheme = "mocha";
-      };
-
+      /*
+            programs.spicetify = {
+              enable = true;
+              enabledExtensions = with spicePkgs.extensions; [
+                adblockify
+                shuffle
+              ];
+              theme = spicePkgs.themes.catppuccin;
+              colorScheme = "mocha";
+            };
+      */
       users.users.alex = {
         home = /Users/alex;
       };
@@ -104,8 +104,8 @@
         typst
         ffmpeg
         spotdl
-        inputs.self.packages.aarch64-darwin.less
-        inputs.self.packages.aarch64-darwin.neovim
+        #self.packages.aarch64-darwin.less
+        self.packages.aarch64-darwin.neovim
         #inputs.nixcats.packages.x86_64-linux.nvim
         #(./wrapper)
       ];
