@@ -1,5 +1,5 @@
 {
-  description = "i love cock";
+  description = "alex nix flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";

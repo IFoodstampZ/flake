@@ -1,2 +1,2 @@
 # flake
-basic flake for alex
+alex nixos and nix-darwin flake

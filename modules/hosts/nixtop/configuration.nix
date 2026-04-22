@@ -17,7 +17,13 @@
       # Bootloader.
       # Enable virualization
       virtualisation.libvirtd.enable = true;
-      boot.loader.systemd-boot.enable = true;
+      #boot.loader.systemd-boot.enable = true;
+      boot.loader.limine = {
+        enable = true;
+        style.wallpapers = [ ../../../wallpapers/wp15785927-charlie-kirk-wallpapers.jpg ];
+        style.wallpaperStyle = "stretched";
+        style.interface.helpHidden = false;
+      };
       boot.loader.efi.canTouchEfiVariables = true;
       boot.extraModprobeConfig = ''
         options kvm_intel nested=1
